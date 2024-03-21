@@ -15,7 +15,12 @@ module.exports = {
   },
 
   // Base config
-  extends: ['eslint:recommended', 'plugin:tailwindcss/recommended', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:tailwindcss/recommended',
+    'plugin:storybook/recommended',
+    'prettier',
+  ],
   plugins: ['tailwindcss'],
 
   overrides: [
