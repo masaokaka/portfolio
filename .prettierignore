@@ -3,5 +3,6 @@ node_modules
 /build
 /public/build
 .env
+tsconfig.json
 
 /app/styles/tailwind.css

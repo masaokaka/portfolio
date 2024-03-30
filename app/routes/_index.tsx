@@ -1,4 +1,5 @@
 import type { MetaFunction } from '@remix-run/node';
+import { Link, useHref } from '@remix-run/react';
 
 export const meta: MetaFunction = () => {
   return [
@@ -8,6 +9,7 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const href = useHref('/blog');
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.8' }}>
       <h1 className="font-bold">Welcome to Remix</h1>
@@ -35,6 +37,8 @@ export default function Index() {
             Remix Docs
           </a>
         </li>
+        <Link to={href}>AAAAA</Link>
+        <div className="h-screen">bb</div>
       </ul>
     </div>
   );
