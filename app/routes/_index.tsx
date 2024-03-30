@@ -21,7 +21,7 @@ export default function Index() {
             15m Quickstart Blog Tutorial
           </a>
         </li>
-        <li>
+        <li className="text-3xl font-bold underline">
           <a
             target="_blank"
             href="https://remix.run/tutorials/jokes"
