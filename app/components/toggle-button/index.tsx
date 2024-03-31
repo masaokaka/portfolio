@@ -1,23 +1,24 @@
+import { Switch } from '@headlessui/react';
+
 export function ToggleButton({
-  isChecked,
-  handleCheck,
+  enabled,
+  handleToggle,
 }: {
-  isChecked: boolean;
-  handleCheck: () => void;
+  enabled: boolean;
+  handleToggle: () => void;
 }) {
   return (
-    <>
-      <input
-        type="checkbox"
-        value=""
-        className="peer sr-only"
-        checked={isChecked}
+    <Switch
+      checked={enabled}
+      onChange={handleToggle}
+      className={`${
+        enabled ? 'bg-black shadow-lg' : 'bg-white'
+      }  relative inline-flex h-7 w-14 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors duration-300 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75`}
+    >
+      <span
+        className={`${enabled ? 'translate-x-7 bg-white shadow-lg' : 'translate-x-1 bg-black'} 
+            pointer-events-none inline-block size-5 rounded-full ring-0 transition duration-300 ease-in-out`}
       />
-      <button
-        type="button"
-        onClick={handleCheck}
-        className="peer relative h-7 w-14 rounded-full bg-gray-200 shadow-lg duration-500 after:absolute after:start-[8px] after:top-1 after:size-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:duration-500 after:content-[''] peer-checked:bg-blue-600 peer-checked:duration-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-4 peer-focus:ring-blue-300 rtl:peer-checked:after:-translate-x-full dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800"
-      />
-    </>
+    </Switch>
   );
 }
