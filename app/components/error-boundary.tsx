@@ -4,6 +4,7 @@ import {
   useParams,
   useRouteError,
 } from '@remix-run/react';
+import { getErrorMessage } from '~/utils/misc';
 
 type StatusHandler = (info: {
   error: ErrorResponse;
@@ -17,7 +18,7 @@ export function GeneralErrorBoundary({
     </p>
   ),
   statusHandlers,
-  unexpectedErrorHandler = (error) => <p>{error as string}</p>,
+  unexpectedErrorHandler = (error) => <p>{getErrorMessage(error)}</p>,
 }: {
   defaultStatusHandler?: StatusHandler;
   statusHandlers?: Record<number, StatusHandler>;
