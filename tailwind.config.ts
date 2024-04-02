@@ -9,8 +9,10 @@ export default {
         // primaryDark: '#312d25',
         secondary: '#bac7e5',
         // secondaryDark: '#25262a',
-        base: '#EFF0F7',
+        base: '#ced1e6',
+        baseContrast: '#ffffff',
         baseDark: '#1E1E1E',
+        baseDarkContrast: '#4e4e4e',
       },
       textColor: {
         // primary: '#112dbe',
@@ -24,3 +26,5 @@ export default {
   darkMode: 'class',
   plugins: [],
 } satisfies Config;
+
+// ['#bac7e5', '#f2a51e', '#e39025', '#8d7051', '#7b7e74'];
