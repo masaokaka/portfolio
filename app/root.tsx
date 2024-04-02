@@ -5,17 +5,21 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
+import { ReactNode } from 'react';
 import stylesheet from '~/tailwind.css?url';
 import { LinksFunction } from '@remix-run/node';
 import { GeneralErrorBoundary } from './components/error-boundary';
+import { ThemeProvider, useTheme } from './utils/theme-provider';
+import { Layout } from './components/layout';
 
 export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: stylesheet },
+  { rel: 'stylesheet', href: stylesheet, as: 'style' },
 ];
 
-function Document({ children }: { children: React.ReactNode }) {
+function Document({ children }: { children: ReactNode }) {
+  const [theme] = useTheme();
   return (
-    <html lang="ja">
+    <html lang="ja" className={theme}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,7 +27,7 @@ function Document({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <Layout>{children}</Layout>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -31,11 +35,19 @@ function Document({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
+function App() {
   return (
     <Document>
       <Outlet />
     </Document>
+  );
+}
+
+export default function AppWithProvider() {
+  return (
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   );
 }
 

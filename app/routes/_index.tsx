@@ -1,8 +1,7 @@
 import type { MetaFunction } from '@remix-run/node';
-import { useState } from 'react';
 import { Loading } from '~/components/loading';
 import { ToggleButton } from '~/components/toggle-button';
-import { Mode } from '~/types/utils';
+import { Theme, useTheme } from '~/utils/theme-provider';
 
 export const meta: MetaFunction = () => {
   return [
@@ -12,17 +11,20 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  const [mode, setMode] = useState<Mode>('light');
-
+  const [theme, setTheme] = useTheme();
+  const isDarkMode = theme === Theme.DARK;
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === Theme.DARK ? Theme.LIGHT : Theme.DARK));
+  };
   return (
-    <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.8' }}>
-      <ToggleButton
-        enabled={mode === 'dark'}
-        handleToggle={() =>
-          setMode((prev) => (prev === 'dark' ? 'light' : 'dark'))
-        }
-      />
+    <div
+      style={{
+        fontFamily: 'system-ui, sans-serif',
+        lineHeight: '1.8',
+      }}
+    >
       <Loading />
+      <ToggleButton enabled={isDarkMode} handleToggle={toggleTheme} />
     </div>
   );
 }
