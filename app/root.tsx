@@ -27,7 +27,7 @@ function Document({ children }: { children: ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="font-default">
         <Layout>{children}</Layout>
         <ScrollRestoration />
         <Scripts />

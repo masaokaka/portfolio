@@ -15,6 +15,9 @@ export default {
         primaryDark: '#ffffff',
         error: '#dc2626',
       },
+      fontFamily: {
+        default: ['Montserrat', 'Noto Sans JP', 'sans-serif'],
+      },
       transitionDuration: {
         default: '500ms',
       },
