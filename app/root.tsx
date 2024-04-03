@@ -9,7 +9,7 @@ import { ReactNode } from 'react';
 import stylesheet from '~/tailwind.css?url';
 import { LinksFunction } from '@remix-run/node';
 import { GeneralErrorBoundary } from './components/error-boundary';
-import { ThemeProvider, useTheme } from './utils/theme-provider';
+import { ThemeProvider, useTheme } from './provider/theme';
 import { Layout } from './components/layout';
 
 export const links: LinksFunction = () => [
