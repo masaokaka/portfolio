@@ -1,8 +1,16 @@
 import { ReactNode } from 'react';
 
-export function Card({ children }: { children: ReactNode }) {
+export function Card({
+  children,
+  isError,
+}: {
+  children: ReactNode;
+  isError?: boolean;
+}) {
   return (
-    <div className="h-auto overflow-hidden rounded-md bg-baseContrast p-5 transition duration-default dark:bg-baseDarkContrast">
+    <div
+      className={`${isError ? 'bg-error' : 'bg-baseContrast dark:bg-baseDarkContrast'} h-auto w-full overflow-hidden rounded-md p-5 transition duration-default`}
+    >
       {children}
     </div>
   );

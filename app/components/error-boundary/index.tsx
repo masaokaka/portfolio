@@ -3,8 +3,16 @@ import {
   isRouteErrorResponse,
   useParams,
   useRouteError,
+  useNavigate,
 } from '@remix-run/react';
 import { getErrorMessage } from '~/utils/misc';
+import { Text } from '../text';
+import {
+  ArrowPathIcon,
+  ExclamationTriangleIcon,
+} from '@heroicons/react/24/outline';
+import { Title } from '../title';
+import { Button } from '../button';
 
 type StatusHandler = (info: {
   error: ErrorResponse;
@@ -13,12 +21,14 @@ type StatusHandler = (info: {
 
 export function GeneralErrorBoundary({
   defaultStatusHandler = ({ error }) => (
-    <p>
+    <Text isError>
       {error.status} {error.data}
-    </p>
+    </Text>
   ),
   statusHandlers,
-  unexpectedErrorHandler = (error) => <p>{getErrorMessage(error)}</p>,
+  unexpectedErrorHandler = (error) => (
+    <Text isError>{getErrorMessage(error)}</Text>
+  ),
 }: {
   defaultStatusHandler?: StatusHandler;
   statusHandlers?: Record<number, StatusHandler>;
@@ -26,19 +36,32 @@ export function GeneralErrorBoundary({
 }) {
   const error = useRouteError();
   const params = useParams();
+  const navigate = useNavigate();
 
   if (typeof document !== 'undefined') {
     console.error(error);
   }
 
   return (
-    <div className="container flex items-center justify-center p-20 text-xl">
-      {isRouteErrorResponse(error)
-        ? (statusHandlers?.[error.status] ?? defaultStatusHandler)({
-            error,
-            params,
-          })
-        : unexpectedErrorHandler(error)}
+    <div className="absolute inset-0 m-auto flex h-screen items-center justify-center space-x-3 bg-transparent">
+      <div className="text-center">
+        <div className="mb-5 mt-1">
+          <ExclamationTriangleIcon className="m-auto size-20 text-error" />
+          <Title isError>Something went wrong...</Title>
+        </div>
+        <div className="my-5">
+          {isRouteErrorResponse(error)
+            ? (statusHandlers?.[error.status] ?? defaultStatusHandler)({
+                error,
+                params,
+              })
+            : unexpectedErrorHandler(error)}
+        </div>
+        <Button handleClick={() => navigate('/')}>
+          <ArrowPathIcon className="size-8" />
+          &nbsp;&nbsp;Back to Top
+        </Button>
+      </div>
     </div>
   );
 }
