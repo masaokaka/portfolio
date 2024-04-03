@@ -9,14 +9,14 @@ export default {
         // primaryDark: '#312d25',
         secondary: '#bac7e5',
         // secondaryDark: '#25262a',
-        base: '#ced1e6',
+        base: '#e8e9e6',
         baseContrast: '#ffffff',
         baseDark: '#1E1E1E',
         baseDarkContrast: '#4e4e4e',
       },
       textColor: {
-        // primary: '#112dbe',
-        // secondary: '#ffffff',
+        primary: '#333333',
+        primaryDark: '#ffffff',
       },
       transitionDuration: {
         default: '500ms',
