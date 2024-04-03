@@ -1,6 +1,8 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 
-export function Layout({ children }: { children: ReactNode }) {
+interface LayoutProps {}
+
+export function Layout({ children }: PropsWithChildren<LayoutProps>) {
   return (
     <div className="h-screen w-screen bg-base p-20 transition duration-default dark:bg-baseDark">
       {children}

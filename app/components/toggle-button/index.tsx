@@ -1,12 +1,13 @@
+import { PropsWithChildren } from 'react';
 import { Switch } from '@headlessui/react';
-
+interface ToggleButtonProps {
+  enabled: boolean;
+  handleToggle: () => void;
+}
 export function ToggleButton({
   enabled,
   handleToggle,
-}: {
-  enabled: boolean;
-  handleToggle: () => void;
-}) {
+}: PropsWithChildren<ToggleButtonProps>) {
   return (
     <Switch
       checked={enabled}
