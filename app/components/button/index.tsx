@@ -11,7 +11,7 @@ export const Button = ({
   return (
     <button
       type="button"
-      className="inline-flex items-center rounded-lg bg-primary px-4 py-2 text-center text-white"
+      className="inline-flex items-center rounded-lg bg-primary px-4 py-2 text-center font-bold text-white"
       onClick={handleClick}
     >
       {children}

@@ -6,7 +6,6 @@ import {
   useNavigate,
 } from '@remix-run/react';
 import { getErrorMessage } from '~/utils/misc';
-import { Text } from '../text';
 import {
   ArrowPathIcon,
   ExclamationTriangleIcon,
@@ -20,12 +19,12 @@ type StatusHandler = (info: {
 
 export function GeneralErrorBoundary({
   defaultStatusHandler = ({ error }) => (
-    <Text>
+    <p>
       {error.status} {error.data}
-    </Text>
+    </p>
   ),
   statusHandlers,
-  unexpectedErrorHandler = (error) => <Text>{getErrorMessage(error)}</Text>,
+  unexpectedErrorHandler = (error) => <p>{getErrorMessage(error)}</p>,
 }: {
   defaultStatusHandler?: StatusHandler;
   statusHandlers?: Record<number, StatusHandler>;
@@ -44,7 +43,7 @@ export function GeneralErrorBoundary({
       <div className="text-center">
         <div className="mb-5 mt-1">
           <ExclamationTriangleIcon className="m-auto size-20" />
-          <h1 className="text-3xl">Something went wrong...</h1>
+          <h1 className="text-3xl font-bold">Something went wrong...</h1>
         </div>
         <div className="my-5">
           {isRouteErrorResponse(error)
@@ -55,7 +54,7 @@ export function GeneralErrorBoundary({
             : unexpectedErrorHandler(error)}
         </div>
         <Button handleClick={() => navigate('/')}>
-          <ArrowPathIcon className="size-8" />
+          <ArrowPathIcon className="size-8 stroke-white" />
           &nbsp;&nbsp;Back to Top
         </Button>
       </div>
