@@ -16,16 +16,13 @@ export default {
         error: '#dc2626',
       },
       fontFamily: {
-        default: ['Montserrat', 'Noto Sans JP', 'sans-serif'],
-      },
-      transitionDuration: {
-        default: '500ms',
+        default: ['Noto Sans JP', 'sans-serif'],
       },
       backgroundColor: {
         base: '#e8e9e6',
         baseContrast: '#ffffff',
-        baseDark: '#1E1E1E',
-        baseDarkContrast: '#4e4e4e',
+        baseDark: '#23272E',
+        baseDarkContrast: '#2D333B',
         error: '#fecaca',
       },
     },

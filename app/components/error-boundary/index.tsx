@@ -11,7 +11,6 @@ import {
   ArrowPathIcon,
   ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline';
-import { Title } from '../title';
 import { Button } from '../button';
 
 type StatusHandler = (info: {
@@ -21,14 +20,12 @@ type StatusHandler = (info: {
 
 export function GeneralErrorBoundary({
   defaultStatusHandler = ({ error }) => (
-    <Text isError>
+    <Text>
       {error.status} {error.data}
     </Text>
   ),
   statusHandlers,
-  unexpectedErrorHandler = (error) => (
-    <Text isError>{getErrorMessage(error)}</Text>
-  ),
+  unexpectedErrorHandler = (error) => <Text>{getErrorMessage(error)}</Text>,
 }: {
   defaultStatusHandler?: StatusHandler;
   statusHandlers?: Record<number, StatusHandler>;
@@ -46,8 +43,8 @@ export function GeneralErrorBoundary({
     <div className="absolute inset-0 m-auto flex h-screen items-center justify-center space-x-3 bg-transparent">
       <div className="text-center">
         <div className="mb-5 mt-1">
-          <ExclamationTriangleIcon className="m-auto size-20 text-error" />
-          <Title isError>Something went wrong...</Title>
+          <ExclamationTriangleIcon className="m-auto size-20" />
+          <h1 className="text-3xl">Something went wrong...</h1>
         </div>
         <div className="my-5">
           {isRouteErrorResponse(error)
