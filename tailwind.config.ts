@@ -4,6 +4,15 @@ export default {
   content: ['./app/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      keyframes: {
+        appear: {
+          '0%': { transform: 'scale(0)' },
+          '100%': { transform: 'scale(1)' },
+        },
+      },
+      animation: {
+        appear: 'appear 1s ease 4s', // 2s 1 forwards
+      },
       colors: {
         primary: '#e39025',
         // primaryDark: '#312d25',

@@ -29,7 +29,7 @@ export default function Index() {
         <Loading handleLoadingDone={() => setShowPage(true)} />
       </div>
       <div
-        className={`${showPage ? 'opacity-100' : 'opacity-0'} grid h-full grid-cols-12 grid-rows-8 gap-4 transition-opacity duration-[2000ms]`}
+        className={`${showPage ? 'opacity-100' : 'opacity-0'} grid h-full grid-cols-12 grid-rows-8 gap-4`}
       >
         <header className="col-span-10 row-span-1">
           <Card>
