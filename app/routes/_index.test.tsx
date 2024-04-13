@@ -19,5 +19,5 @@ const RemixStub = createRemixStub([
 
 test('test if the top page renders properly.', () => {
   render(<RemixStub />);
-  expect(screen.getByText('Name')).toBeInTheDocument();
+  expect(screen.getByText('My Dashboard')).toBeInTheDocument();
 });
